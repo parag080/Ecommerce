@@ -1,3 +1,14 @@
+//ADMIN TABLE
+
+CREATE TABLE `ecom`.`admin` (
+  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `username` VARCHAR(45) NULL,
+  `password` VARCHAR(45) NULL,
+  `creationDate` VARCHAR(45) NULL,
+  PRIMARY KEY (`id`));
+
+
+
 //USERS TABLE
 
 CREATE TABLE `ecom`.`users` (
@@ -39,6 +50,7 @@ CREATE TABLE `ecom`.`products` (
 
 
 
+
 //ORDERS TABLE
 
 CREATE TABLE `ecom`.`orders` (
@@ -50,5 +62,40 @@ CREATE TABLE `ecom`.`orders` (
   `discount` DECIMAL(10,2) NULL,
   `shippingFee` DECIMAL(10,2) NULL,
   `total` DECIMAL(10,2) NULL,
+  `paymentMethod` VARCHAR(45) NULL,
   `status` VARCHAR(45) NULL,
   PRIMARY KEY (`id`));
+
+
+//ORDERS_TRACKING TABLE
+
+CREATE TABLE `ecom`.`ordertracking` (
+  `id` INT NOT NULL,
+  `orderId` VARCHAR(45) NULL,
+  `status` VARCHAR(45) NULL,
+  `remark` VARCHAR(45) NULL,
+  `postingDate` VARCHAR(45) NULL,
+  PRIMARY KEY (`id`));
+
+
+
+// WHISHLIST TABLE
+
+CREATE TABLE `ecom`.`whislist` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `userId` INT(11) NULL,
+  `productId` INT(11) NULL,
+  `postingDate` VARCHAR(45) NULL,
+  PRIMARY KEY (`id`));
+
+
+
+//REVIEWS TABLE
+
+  CREATE TABLE `ecom`.`productreviews` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `productId` INT(11) NULL,
+  `summery` VARCHAR(45) NULL,
+  `reviewDate` VARCHAR(45) NULL,
+  PRIMARY KEY (`id`));
+
