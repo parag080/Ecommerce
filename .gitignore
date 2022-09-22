@@ -1,3 +1,8 @@
-/server/api
+/AppServer/api
 
-/server/node_modules
+/AppServer/node_modules
+
+/AppServer/app.js
+
+/AppServer/controllers/authcontroller.js
+
