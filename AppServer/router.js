@@ -1,19 +1,28 @@
-var authController=require('./controllers/authcontroller');
-var userController=require('./controllers/usercontroller');
+var authController = require('./controllers/authcontroller');
+var userController = require('./controllers/usercontroller');
 
 
-module.exports=function(app){
-    app.route('/api/users')
-            .get(userController.Users) 
-            .post(userController.InsertUser) 
-            
-    app.route('/api/users/:id')
-             .delete(userController.RemoveUser)  
-             .get(userController.UserById)  
-             .put(userController.UpdateUser) 
+module.exports = function (app) {
+        app.route('/api/users')
+                .get(userController.Users)
+                .post(userController.InsertUser)
 
-    app.route('/api/login')
-            .post(authController.login);
-    app.route('/api/register')
-            .post(authController.register);
+        app.route('/api/users/:id')
+                .delete(userController.RemoveUser)
+                .get(userController.UserById)
+                .put(userController.UpdateUser)
+
+        app.route('/api/products')
+                .get(userController.Products)
+                .post(userController.InsertProduct)
+
+        app.route('/api/products/:id')
+                .delete(userController.RemoveProduct)
+                .get(userController.ProductById)
+                .put(userController.UpdateProduct)
+
+        app.route('/api/login')
+                .post(authController.login);
+        app.route('/api/register')
+                .post(authController.register);
 };
