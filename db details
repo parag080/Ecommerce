@@ -1,0 +1,54 @@
+//USERS TABLE
+
+CREATE TABLE `ecom`.`users` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `fullname` VARCHAR(45) NULL,
+  `email` VARCHAR(45) NULL,
+  `password` VARCHAR(45) NULL,
+  `address` VARCHAR(45) NULL,
+  `city` VARCHAR(45) NULL,
+  `state` VARCHAR(45) NULL,
+  `mobie` INT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE INDEX `email_UNIQUE` (`email` ASC) VISIBLE,
+  UNIQUE INDEX `mobie_UNIQUE` (`mobie` ASC) VISIBLE);
+
+
+
+//CATEGORY TABLE
+
+CREATE TABLE `ecom`.`categories` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `categoryName` VARCHAR(45) NULL,
+  `description` MEDIUMTEXT NULL,
+  PRIMARY KEY (`id`));
+
+
+
+//PRODUCTS TABLE
+
+CREATE TABLE `ecom`.`products` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `categoryId` VARCHAR(45) NULL,
+  `productName` VARCHAR(45) NULL,
+  `productPrice` VARCHAR(45) NULL,
+  `description` MEDIUMTEXT NULL,
+  `manufactureYear` VARCHAR(45) NULL,
+  `instock` VARCHAR(45) NULL,
+  PRIMARY KEY (`id`));
+
+
+
+//ORDERS TABLE
+
+CREATE TABLE `ecom`.`orders` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `userid` INT NULL,
+  `productid` INT NULL,
+  `orderDate` DATETIME NULL,
+  `subtotal` DECIMAL(10,2) NULL,
+  `discount` DECIMAL(10,2) NULL,
+  `shippingFee` DECIMAL(10,2) NULL,
+  `total` DECIMAL(10,2) NULL,
+  `status` VARCHAR(45) NULL,
+  PRIMARY KEY (`id`));
