@@ -74,6 +74,7 @@ exports.ProductById=function(id){
          let command="SELECT * FROM  products WHERE id="+id;
          sql.query(command,(err, rows, fields)=>{
              resolve(rows);
+            
          })
      }) 
  };
@@ -91,6 +92,7 @@ exports.InsertProduct=function(req){
     
 })
 }
+
 exports.RemoveProduct=function(id){
     return new Promise(resolve=>{
         let command="DELETE FROM products Where id="+id ;
@@ -112,3 +114,37 @@ exports.UpdateProduct=function(req){
 }
 
 /* Products End*/
+
+/* Whislist start */
+
+
+exports.Wishlist=(req)=>{
+    return new Promise(resolve=>{
+    sql.query("select * from whislist",(err,result)=>{
+        resolve(result);
+    })
+})
+}
+
+exports.InsertWishlist=function(req){
+    return new Promise(resolve=>{
+const {userId,productId}=req.body;
+sql.query("insert into whislist set ? ",{userId,productId},(err,rows,fields)=>{
+   resolve(rows);
+   if(err){
+    console.log(err)
+   }
+})
+})
+}
+
+exports.RemoveWishlist=function(id){
+    return new Promise(resolve=>{
+        let command="DELETE FROM whislist Where id="+id ;
+        sql.query(command,(err, rows, fields)=>{
+            resolve(rows);
+        })
+})
+}
+/* Whislist End */
+

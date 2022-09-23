@@ -55,8 +55,7 @@ CREATE TABLE `ecom`.`products` (
 
 CREATE TABLE `ecom`.`orders` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `userid` INT NULL,
-  `productid` INT NULL,
+  `wishlistid` INT NULL,
   `orderDate` DATETIME NULL,
   `subtotal` DECIMAL(10,2) NULL,
   `discount` DECIMAL(10,2) NULL,

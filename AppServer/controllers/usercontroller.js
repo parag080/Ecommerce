@@ -70,3 +70,24 @@ exports.UpdateProduct = async (req, res) => {
 };
 
 /* Products End*/
+
+/*Wishlist Start */
+
+exports.InsertWishlist=async(req,res)=>{
+    let result=[];
+    result=await dal.InsertWishlist(req);
+    res.send(result);
+
+}
+
+exports.Wishlist=async(req,res)=>{
+    let result=[];
+    result=await dal.Wishlist(req);
+    res.send(result);
+}
+
+exports.RemoveWishlist = async (req, res) => {
+    let result = [];
+    result = await dal.RemoveWishlist(req.params.id)
+    res.send(result);
+};

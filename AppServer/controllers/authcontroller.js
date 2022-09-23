@@ -2,7 +2,7 @@ const sql = require('../models/db');
 exports.login = (req, res) => {
     const { fullname, password } = req.body;
     
-    ql.query("select * from users where fullname=? and password=?", [fullname, password], (err, result) => {
+    sql.query("select * from users where fullname=? and password=?", [fullname, password], (err, result) => {
         if (err) {
             res.send({ err: err });
         }

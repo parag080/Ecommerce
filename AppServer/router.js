@@ -21,6 +21,13 @@ module.exports = function (app) {
                 .get(userController.ProductById)
                 .put(userController.UpdateProduct)
 
+        app.route('/api/wishlist')
+                .post(userController.InsertWishlist)
+                .get(userController.Wishlist)
+         
+        app.route('/api/wishlist/:id')
+                .delete(userController.RemoveWishlist)
+                
         app.route('/api/login')
                 .post(authController.login);
         app.route('/api/register')
