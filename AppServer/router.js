@@ -24,10 +24,12 @@ module.exports = function (app) {
         app.route('/api/wishlist')
                 .post(userController.InsertWishlist)
                 .get(userController.Wishlist)
-         
+                
+
         app.route('/api/wishlist/:id')
                 .delete(userController.RemoveWishlist)
-        
+                .get(userController.WishlistByUserId)
+                
         app.route('/api/orders')
                 .post(userController.InsertOrders)
                 .get(userController.Orders)

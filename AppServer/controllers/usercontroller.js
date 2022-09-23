@@ -92,6 +92,11 @@ exports.RemoveWishlist = async (req, res) => {
     res.send(result);
 };
 
+exports.WishlistByUserId = async function (req, res) {
+    let result = [];
+    result = await dal.WishlistByUserId(req.params.id);
+    res.send(result);
+};
 /* wishlist end */
 
 /*orders start */
