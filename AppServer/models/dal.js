@@ -1,4 +1,3 @@
-const { promise } = require('./db');
 const sql = require('./db');
 
 /* Users Start*/
@@ -57,6 +56,59 @@ exports.UpdateUser = function (req) {
 
 /* Users End*/
 
+/* Category Start */
+
+exports.Category=function(){
+    return new Promise(resolve=>{
+        sql.query("select * from categories",(err,result)=>{
+           resolve(result)
+        })
+    })
+}
+
+exports.CategoryById=function(id){
+    return new Promise(resolve=>{
+        
+        sql.query("select * from categories where id="+id,(err,result)=>{
+            resolve(result)
+        })
+    } )
+}
+
+exports.CategoryByName=function(req){
+    return new Promise(resolve=>{
+        const { name} = req.params;
+        sql.query("select * from categories where categoryName=?",[name],(err,result)=>{
+            if(err){
+                console.log(err)
+            }
+            else{
+                resolve(result)
+            }
+        })
+    } )
+}
+
+exports.InsertCategory=function(req){
+    return new Promise(resolve => {
+        const { categoryName, description} = req.body;
+
+        sql.query("insert into categories set ?", { categoryName, description}, (err, rows, fields) => {
+            resolve(rows);
+        })
+
+    })
+}   
+
+exports.DeleteCategory=function(id){
+    return new Promise(resolve => {
+        sql.query("delete  from categories where id="+id,(err,result)=>{
+            resolve(result)
+        })
+    } )
+}
+
+/* Category End */
 
 /* Products Start*/
 

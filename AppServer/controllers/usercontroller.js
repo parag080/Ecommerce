@@ -36,6 +36,38 @@ exports.UpdateUser = async (req, res) => {
 
 /* Users End*/
 
+/* Category Start */
+exports.Category=async function(req,res){
+    let result=[];
+    result=await dal.Category()
+    res.send(result);
+}
+
+exports.CategoryById = async function (req, res) {
+    let result = [];
+    result = await dal.CategoryById(req.params.id);
+    res.send(result);
+};
+
+exports.CategoryByName = async function (req, res) {
+    let result = [];
+    result = await dal.CategoryByName(req);
+    res.send(result);
+};
+
+exports.InsertCategory=async function(req,res){
+    let result = [];
+    result = await dal.InsertCategory(req);
+    res.send(result);
+}
+
+exports.DeleteCategory = async (req, res) => {
+    let result = [];
+    result = await dal.DeleteCategory(req.params.id)
+    res.send(result);
+};
+/*Category End */
+
 /* Products Start */
 
 exports.Products = async function (req, res) {

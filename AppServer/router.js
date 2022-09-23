@@ -12,6 +12,17 @@ module.exports = function (app) {
                 .get(userController.UserById)
                 .put(userController.UpdateUser)
 
+        app.route('/api/category')
+                .get(userController.Category)
+                .post(userController.InsertCategory)
+
+        app.route('/api/category/:id')
+                .get(userController.CategoryById)
+                .delete(userController.DeleteCategory)
+         
+        app.route('/api/categoryname/:name')
+                .get(userController.CategoryByName)
+
         app.route('/api/products')
                 .get(userController.Products)
                 .post(userController.InsertProduct)
@@ -29,7 +40,7 @@ module.exports = function (app) {
         app.route('/api/wishlist/:id')
                 .delete(userController.RemoveWishlist)
                 .get(userController.WishlistByUserId)
-                
+
         app.route('/api/orders')
                 .post(userController.InsertOrders)
                 .get(userController.Orders)
