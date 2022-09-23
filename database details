@@ -107,4 +107,7 @@ ADD CONSTRAINT `categoryId`
   ON DELETE NO ACTION
   ON UPDATE NO ACTION;
 
-  alter table orders add constraint foreign key(productid) references products(id) on update cascade on delete no action;
+ALTER TABLE `ecom`.`orders` 
+add constraint foreign key(`wishlistid`) 
+references `ecom`.`products`(`id`) 
+on update cascade on delete no action;
