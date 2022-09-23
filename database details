@@ -1,4 +1,4 @@
-//ADMIN TABLE
+/*ADMIN TABLE */
 
 CREATE TABLE `ecom`.`admin` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -9,7 +9,7 @@ CREATE TABLE `ecom`.`admin` (
 
 
 
-//USERS TABLE
+/*USERS TABLE */
 
 CREATE TABLE `ecom`.`users` (
   `id` INT NOT NULL AUTO_INCREMENT,
@@ -19,14 +19,14 @@ CREATE TABLE `ecom`.`users` (
   `address` VARCHAR(45) NULL,
   `city` VARCHAR(45) NULL,
   `state` VARCHAR(45) NULL,
-  `mobie` INT NULL,
+  `mobile` INT NULL,
   PRIMARY KEY (`id`),
   UNIQUE INDEX `email_UNIQUE` (`email` ASC) VISIBLE,
   UNIQUE INDEX `mobie_UNIQUE` (`mobie` ASC) VISIBLE);
 
 
 
-//CATEGORY TABLE
+/* CATEGORY TABLE */
 
 CREATE TABLE `ecom`.`categories` (
   `id` INT NOT NULL AUTO_INCREMENT,
@@ -36,7 +36,7 @@ CREATE TABLE `ecom`.`categories` (
 
 
 
-//PRODUCTS TABLE
+/* PRODUCTS TABLE */
 
 CREATE TABLE `ecom`.`products` (
   `id` INT NOT NULL AUTO_INCREMENT,
@@ -51,7 +51,7 @@ CREATE TABLE `ecom`.`products` (
 
 
 
-//ORDERS TABLE
+/*ORDERS TABLE */
 
 CREATE TABLE `ecom`.`orders` (
   `id` INT NOT NULL AUTO_INCREMENT,
@@ -67,7 +67,7 @@ CREATE TABLE `ecom`.`orders` (
   PRIMARY KEY (`id`));
 
 
-//ORDERS_TRACKING TABLE
+/*ORDERS_TRACKING TABLE */
 
 CREATE TABLE `ecom`.`ordertracking` (
   `id` INT NOT NULL,
@@ -79,7 +79,7 @@ CREATE TABLE `ecom`.`ordertracking` (
 
 
 
-// WHISHLIST TABLE
+/* WHISHLIST TABLE */
 
 CREATE TABLE `ecom`.`whislist` (
   `id` INT NOT NULL AUTO_INCREMENT,
@@ -90,7 +90,7 @@ CREATE TABLE `ecom`.`whislist` (
 
 
 
-//REVIEWS TABLE
+/*REVIEWS TABLE */
 
   CREATE TABLE `ecom`.`productreviews` (
   `id` INT NOT NULL AUTO_INCREMENT,
@@ -99,3 +99,13 @@ CREATE TABLE `ecom`.`whislist` (
   `reviewDate` VARCHAR(45) NULL,
   PRIMARY KEY (`id`));
 
+
+
+ALTER TABLE `ecom`.`products` 
+ADD CONSTRAINT `categoryId`
+  FOREIGN KEY (`categoryId`)
+  REFERENCES `ecom`.`categories` (`id`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;
+
+  alter table orders add constraint foreign key(productid) references products(id) on update cascade on delete no action;
