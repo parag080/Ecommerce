@@ -34,6 +34,7 @@ module.exports = function (app) {
 
         app.route('/api/orders/:id')
                 .delete(userController.RemoveOrders)
+                .get(userController.OrdersById)
                 .put(userController.UpdateOrders)
 
         app.route('/api/login')

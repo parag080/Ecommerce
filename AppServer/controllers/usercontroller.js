@@ -119,4 +119,10 @@ exports.UpdateOrders = async (req, res) => {
     result = await dal.UpdateOrders(req)
     res.send(result);
 };
+
+exports.OrdersById = async function (req, res) {
+    let result = [];
+    result = await dal.OrdersById(req.params.id);
+    res.send(result);
+};
 /*orders end */
