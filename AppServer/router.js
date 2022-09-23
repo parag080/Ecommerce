@@ -27,7 +27,14 @@ module.exports = function (app) {
          
         app.route('/api/wishlist/:id')
                 .delete(userController.RemoveWishlist)
-                
+        
+        app.route('/api/orders')
+                .post(userController.InsertOrders)
+                .get(userController.Orders)
+
+        app.route('/api/orders/:id')
+                .delete(userController.RemoveOrders)
+
         app.route('/api/login')
                 .post(authController.login);
         app.route('/api/register')
