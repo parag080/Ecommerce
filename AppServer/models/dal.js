@@ -178,4 +178,15 @@ exports.Orders= (req) => {
         })
     })
 }
+
+exports.UpdateOrders = function (req) {
+    return new Promise(resolve => {
+        const { id } = req.params;
+        const data = req.body;
+        sql.query("update orders set ? where id=?", [data, id], (err, rows) => {
+            resolve(rows);
+
+        })
+    })
+}
 /*Orders End */

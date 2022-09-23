@@ -113,4 +113,10 @@ exports.Orders=async(req,res)=>{
     result=await dal.Orders(req);
     res.send(result);
 }
+
+exports.UpdateOrders = async (req, res) => {
+    let result = [];
+    result = await dal.UpdateOrders(req)
+    res.send(result);
+};
 /*orders end */
