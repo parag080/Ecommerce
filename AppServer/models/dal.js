@@ -1,5 +1,6 @@
+var session = require('express-session');
 const sql = require('./db');
-
+var session;
 /* Users Start*/
 
 exports.Users = function () {
@@ -20,8 +21,6 @@ exports.UserById = function (id) {
         })
     })
 };
-
-
 
 
 exports.InsertUser = function (req) {
@@ -58,11 +57,13 @@ exports.UpdateUser = function (req) {
 
 /* Category Start */
 
-exports.Category=function(){
+exports.Category=function(req){
     return new Promise(resolve=>{
+      
         sql.query("select * from categories",(err,result)=>{
            resolve(result)
         })
+    
     })
 }
 
@@ -171,11 +172,21 @@ exports.UpdateProduct = function (req) {
 /* Whislist start */
 
 
-exports.Wishlist = (req) => {
+exports.Wishlist = (req,res) => {
     return new Promise(resolve => {
-        sql.query("select * from whislist", (err, result) => {
+        session=req.session;
+        if(session.userid){
+            console.log(session.userid)
+        sql.query("SELECT * FROM whislist INNER JOIN users ON whislist.userId=users.id WHERE whislist.userId="+ session.userid, (err, result) => {
             resolve(result);
-        })
+        }
+        
+        )
+    }else{
+        console.log("please login")
+    }
+    
+
     })
 }
 

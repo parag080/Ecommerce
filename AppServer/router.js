@@ -1,5 +1,5 @@
 var authController = require('./controllers/authcontroller');
-var userController = require('./controllers/usercontroller');
+var userController = require('./controllers/userscontroller');
 
 
 module.exports = function (app) {
@@ -50,8 +50,13 @@ module.exports = function (app) {
                 .get(userController.OrdersById)
                 .put(userController.UpdateOrders)
 
+        app.route('/api/dashboard')
+                .get(userController.dashboard)
+
         app.route('/api/login')
                 .post(authController.login);
+        app.route('/api/logout')
+                .get(authController.logout);
         app.route('/api/register')
                 .post(authController.register);
 };
